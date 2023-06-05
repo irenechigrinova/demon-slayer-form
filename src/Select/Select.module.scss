@@ -1,0 +1,43 @@
+.formItem {
+  vertical-align: top;
+  position: relative;
+  max-width: 720px;
+  padding-bottom: 12px;
+
+  & ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    & li {
+      padding: 4px 0;
+      background: transparent;
+      transition: background 200ms;
+
+      &:hover {
+        background: var(--pink);
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.options {
+  padding: 15px;
+  background: white;
+  min-width: 720px;
+  height: auto;
+  max-height: 200px;
+  overflow-y: auto;
+  border: 1px solid #22221d6e;
+  border-radius: 2px;
+  position: absolute;
+  top: 66px;
+
+  & button {
+    border: none;
+    background: transparent;
+    outline: none;
+    cursor: pointer;
+  }
+}

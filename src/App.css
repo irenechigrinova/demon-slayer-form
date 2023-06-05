@@ -1,0 +1,28 @@
+
+:root {
+    --black: #1d181c;
+    --brown: #c46641;
+    --pink: #f6bbbf;
+    --dark-brown: #4b383c;
+    --light: #f9e3d0;
+    --green: #53c09b;
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+}
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background-color: var(--light);
+}
+
+body * {
+    box-sizing: border-box;
+}
+

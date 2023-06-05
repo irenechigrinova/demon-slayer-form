@@ -1,0 +1,79 @@
+.watcher {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: conic-gradient(var(--green) 0%, var(--light) var(--data-value));
+
+  & img {
+    width: 150px;
+    z-index: 2;
+    position: relative;
+  }
+
+  &::after {
+    content: '';
+    width: 142px;
+    height: 142px;
+    background-color: var(--light);
+    position: absolute;
+    z-index: 1;
+    top: 4px;
+    left: 4px;
+    border-radius: 50%;
+  }
+}
+
+.pupil {
+  width: 8px;
+  height: 8px;
+  background-color: var(--black);
+  border-radius: 50%;
+  position: absolute;
+  z-index: 2;
+  transition: all 100ms;
+
+  &:first-of-type {
+    top: 61px;
+    left: 50px;
+
+    &.right {
+      left: 53px;
+    }
+
+    &.left {
+      left: 50px;
+    }
+
+    &.top {
+      top: 59px;
+    }
+
+    &.bottom {
+      top: 62px;
+    }
+  }
+
+  &:last-of-type {
+    top: 61px;
+    left: 91px;
+
+    &.right {
+      left: 92px;
+    }
+
+    &.left {
+      left: 89px;
+    }
+
+    &.top {
+      top: 59px;
+    }
+
+    &.bottom {
+      top: 62px;
+    }
+  }
+}

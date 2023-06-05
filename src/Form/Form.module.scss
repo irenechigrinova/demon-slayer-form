@@ -1,0 +1,57 @@
+.container {
+  width: 920px;
+  margin: 200px auto 0;
+  position: relative;
+
+  & .hands {
+    position: absolute;
+    width: 200px;
+    left: calc(50% - 100px);
+    top: -2px;
+    z-index: 2;
+  }
+
+  & .face {
+    position: absolute;
+    width: 200px;
+    left: calc(50% - 100px);
+    z-index: -1;
+    transition: top 400ms ease-in-out;
+
+    &.hide {
+      top: -96px;
+    }
+
+    &.show {
+      top: -120px;
+    }
+  }
+
+  & button[type='submit'] {
+    background: #000000;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    height: 64px;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 720px;
+
+    & img {
+      height: 100%;
+    }
+  }
+}
+
+.form {
+  background-color: white;
+  border-radius: 8px;
+  padding: 52px 24px 24px;
+  box-shadow: 0px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

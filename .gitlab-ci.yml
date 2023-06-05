@@ -1,0 +1,47 @@
+---
+stages:
+  - build
+  - deploy
+
+build:
+  stage: build
+  image:
+    name: gcr.io/kaniko-project/executor:debug
+    entrypoint: [""]
+  script:
+    - mkdir -p /kaniko/.docker
+    - echo "{\"auths\":{\"${CI_REGISTRY}\":{\"auth\":\"$(printf "%s:%s" "${CI_REGISTRY_USER}" "${CI_REGISTRY_PASSWORD}" | base64 | tr -d '\n')\"}}}" > /kaniko/.docker/config.json
+    - echo "@lucid:registry=${CI_API_V4_URL}/packages/npm/" > ${CI_PROJECT_DIR}/.npmrc
+    - echo "//${CI_SERVER_HOST}/api/v4/packages/npm/:_authToken=${CI_JOB_TOKEN}" >> ${CI_PROJECT_DIR}/.npmrc
+    - >-
+      /kaniko/executor
+      --cache=true
+      --context "${CI_PROJECT_DIR}"
+      --dockerfile "${CI_PROJECT_DIR}/deployments/containerfiles/Containerfile"
+      --destination "${CI_REGISTRY_IMAGE}:${CI_COMMIT_SHORT_SHA}"
+  tags:
+    - lucid-k8s
+
+deploy:
+  stage: deploy
+  image:
+    name: alpine/helm:3.9.4
+    entrypoint: [""]
+  script:
+    - mkdir -p "~/.kube"
+    - echo "${K8S_KUBECONFIG}" | base64 -d > "~/.kube/config"
+    - export KUBECONFIG="~/.kube/config"
+    - env
+    - helm upgrade lk-prod ./deployments/helm
+      --install
+      --create-namespace
+      --namespace "lk-prod"
+      --set images.front="${CI_REGISTRY_IMAGE}:${CI_COMMIT_SHORT_SHA}"
+      --set host="account.dev.lucidnode.com"
+  only:
+    refs:
+      - main
+  tags:
+    - lucid-k8s
+  environment:
+    name: main

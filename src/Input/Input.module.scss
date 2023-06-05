@@ -1,0 +1,83 @@
+.formItem {
+  vertical-align: top;
+  position: relative;
+  max-width: 720px;
+  padding-bottom: 12px;
+
+  & button {
+    border: none;
+    background: transparent;
+    outline: none;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50px;
+    height: 50px;
+    opacity: 0.5;
+
+    & img {
+      width: 100%;
+    }
+  }
+}
+
+.formInput {
+  padding: 30px 15px 5px 15px;
+  margin-bottom: 16px;
+  font-size: 18px;
+  background: none;
+  min-width: 720px;
+  height: 64px;
+  border: 1px solid #22221d6e;
+  border-radius: 2px;
+  position: relative;
+  transition: border-color 200ms;
+}
+
+.formInputErr {
+  border-color: rgba(212, 2, 191, 1);
+}
+
+.formLabel {
+  position: absolute;
+  pointer-events: none;
+  left: 15px;
+  color: #22221db5;
+  top: 26px;
+  font-size: 18px;
+  white-space: nowrap;
+  overflow: hidden;
+  line-height: 40px;
+  transition: top 0.3s, font-size 0.3s;
+}
+
+.error {
+  color: rgba(212, 2, 191, 1);
+  font-size: 12px;
+  padding-top: 0px;
+  position: absolute;
+  left: 2px;
+  bottom: 6px;
+}
+
+.formInput:focus {
+  background-color: #fff;
+}
+
+.formInput:focus ~ .formLabel,
+.formInput:not(:focus):valid ~ .formLabel {
+  top: -5px;
+  font-size: 14px;
+}
+
+.formInput:disabled {
+  cursor: not-allowed;
+}
+
+.strong {
+  width: 50px;
+  position: absolute;
+  left: -75px;
+  top: -6px;
+}
