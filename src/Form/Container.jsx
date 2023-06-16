@@ -25,6 +25,9 @@ export const Container = () => {
         />
       </div>
       <Form onFocus={handleFocus} onBlur={handleBlur} />
+      {/* <div className={styles.loading}> */}
+      {/*  <img src="/loading.gif" alt="loading" /> */}
+      {/* </div> */}
     </div>
   );
 };
