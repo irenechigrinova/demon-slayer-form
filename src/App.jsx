@@ -7,6 +7,7 @@ import { Container } from './Form/Container';
 
 const App = () => {
   const [coords, setCoords] = useState([0, 0]);
+  const [percentage, setPercentage] = useState(0);
 
   const handleMouse = e => {
     const { clientX, clientY } = e;
@@ -23,7 +24,10 @@ const App = () => {
 
   return (
     <div className="app">
-      <div className={styles.watcher} style={{ '--data-value': '25%' }}>
+      <div
+        className={styles.watcher}
+        style={{ '--data-value': `${percentage}%` }}
+      >
         <img src="/inosuke.png" alt="Inosuke" />
         <div
           className={`${styles.pupil} ${
@@ -36,7 +40,7 @@ const App = () => {
           } ${coords[1] > 80 ? styles.bottom : styles.top}`}
         />
       </div>
-      <Container />
+      <Container setPercentage={setPercentage} />
     </div>
   );
 };

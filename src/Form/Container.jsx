@@ -3,7 +3,7 @@ import styles from './Form.module.scss';
 
 import { Form } from './Form';
 
-export const Container = () => {
+export const Container = props => {
   const [isFocused, setIsFocused] = useState(false);
 
   const handleFocus = () => {
@@ -24,7 +24,11 @@ export const Container = () => {
           className={`${styles.face} ${isFocused ? styles.show : styles.hide}`}
         />
       </div>
-      <Form onFocus={handleFocus} onBlur={handleBlur} />
+      <Form
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+        setPercentage={props.setPercentage}
+      />
       {/* <div className={styles.loading}> */}
       {/*  <img src="/loading.gif" alt="loading" /> */}
       {/* </div> */}
